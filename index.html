@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Becas y Estudios Superiores en el Perú</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e, #3949ab, #5c6bc0);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid;
+        }
+
+        .institucion {
+            background: linear-gradient(135deg, #e3f2fd, #f5f5f5, #ffebee);
+            border-left: 5px solid #5c6bc0;
+            text-align: center;
+        }
+        .institucion h2 {
+            color: #283593;
+            border-color: #ef5350;
+        }
+        .logo-colegio {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            border: 4px solid #ddd;
+        }
+        .institucion p {
+            font-size: 1.05rem;
+            color: #333;
+            margin: 0.5rem 0;
+        }
+
+        .becas {
+            background: linear-gradient(to right, #e8eaf6, #c5cae9, #bbdefb);
+            border-left: 5px solid #283593;
+        }
+        .becas h2 {
+            color: #1a237e;
+            border-color: #3949ab;
+        }
+
+        .universidades {
+            background: linear-gradient(to right, #ffebee, #ffcdd2, #ef9a9a);
+            border-left: 5px solid #c62828;
+        }
+        .universidades h2 {
+            color: #b71c1c;
+            border-color: #d32f2f;
+        }
+
+        .institutos {
+            background: linear-gradient(to right, #f5f5f5, #e3f2fd, #fbe9e7);
+            border-left: 5px solid #424242;
+        }
+        .institutos h2 {
+            color: #263238;
+            border-color: #78909c;
+        }
+
+        .equipo {
+            background: linear-gradient(135deg, #e8eaf6, #fafafa, #ffebee);
+            border-left: 5px solid #c62828;
+        }
+        .equipo h2 {
+            color: #b71c1c;
+            border-color: #5c6bc0;
+            text-align: center;
+        }
+        .integrantes-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .integrante-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .integrante-card:hover {
+            transform: translateY(-5px);
+        }
+        .integrante-nombre {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #263238;
+            margin-bottom: 0.8rem;
+        }
+        .etiqueta {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+        }
+        .etiqueta.lider {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+        }
+        .etiqueta.integrante {
+            background: linear-gradient(135deg, #c62828, #ef5350);
+        }
+
+        /* Sección Profesora */
+        .profesora {
+            background: linear-gradient(135deg, #f5f5f5, #e3f2fd, #ffebee);
+            border-left: 5px solid #5c6bc0;
+            text-align: center;
+        }
+        .profesora h2 {
+            color: #283593;
+            border-color: #ef5350;
+        }
+        .profesora-nombre {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #b71c1c;
+            margin-top: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+        }
+
+        strong {
+            color: inherit;
+        }
+
+        .oficial-link {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #42a5f5, #ef5350);
+            border-radius: 12px;
+        }
+
+        .oficial-link a {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            display: inline-block;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .oficial-link a:hover {
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #e0e0e0;
+            color: #424242;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎓 Opciones de Estudio Después de la Secundaria</h1>
+        <p>Información sobre becas, universidades e institutos en el Perú</p>
+    </header>
+
+    <div class="container">
+
+        <section class="institucion">
+            <h2>🏫 Institución Educativa</h2>
+            <h3>I.E. N° 2002 "Virgen María del Rosario"</h3>
+            <img src="https://i.imgur.com/9ZxQ7sL.png" alt="Logo I.E. 2002 Virgen María del Rosario" class="logo-colegio">
+            <br>
+            <p><strong>Ubicación:</strong> Cooperativa de Vivienda Naranjal, Mz. F Lote 17 — San Martín de Porres, Lima</p>
+            <p><strong>Nivel y Grado:</strong> Secundaria — Segundo D</p>
+            <p><strong>Gestión:</strong> Pública</p>
+            <p><strong>Teléfono:</strong> 5288075</p>
+        </section>
+
+        <section class="equipo">
+            <h2>👥 Integrantes del Equipo</h2>
+            <div class="integrantes-lista">
+                <div class="integrante-card">
+                    <div class="integrante-nombre">Maikoll Delgado</div>
+                    <span class="etiqueta lider">Líder</span>
+                </div>
+                <div class="integrante-card">
+                    <div class="integrante-nombre">Mateo Chipana</div>
+                    <span class="etiqueta integrante">Integrante</span>
+                </div>
+                <div class="integrante-card">
+                    <div class="integrante-nombre">Alónzo Torres</div>
+                    <span class="etiqueta integrante">Integrante</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Profesora -->
+        <section class="profesora">
+            <h2>📚 Profesora</h2>
+            <div class="profesora-nombre">Doris Jau</div>
+        </section>
+
+        <section class="becas">
+            <h2>📌 Becas y Ayudas Económicas</h2>
+            <p>Existen diversos programas de becas que te permiten continuar tus estudios superiores sin preocuparte por el costo de la matrícula o la pensión. Algunas de las principales son:</p>
+            <ul>
+                <li><strong>Beca 18:</strong> Programa del Estado peruano que cubre estudios en universidades, institutos o escuelas de las Fuerzas Armadas. Dirigido a jóvenes en condición de vulnerabilidad con alto rendimiento académico.</li>
+                <li><strong>Beca Permanencia:</strong> Apoyo económico para estudiantes que ya cursan estudios superiores y necesitan ayuda para mantenerse.</li>
+                <li><strong>Beca Docente:</strong> Destinada a jóvenes que desean estudiar carreras de educación y comprometerse a ejercer la docencia en zonas rurales o de difícil acceso.</li>
+                <li><strong>Beca para Comunidades Indígenas:</strong> Fomentan el acceso a la educación superior de jóvenes pertenecientes a pueblos originarios.</li>
+                <li><strong>Préstamos Educativos:</strong> Financiamiento reembolsable que te permite estudiar y pagar una vez que tengas ingresos.</li>
+            </ul>
+        </section>
+
+        <section class="universidades">
+            <h2>🏛️ Universidades</h2>
+            <p>Las universidades ofrecen carreras profesionales de pregrado con una duración aproximada de 5 años. En el Perú existen dos tipos:</p>
+            <ul>
+                <li><strong>Universidades Públicas:</strong> Financiadas por el Estado, con matrícula generalmente gratuita o muy baja. El ingreso se da mediante examen de admisión. Ejemplos: Universidad Nacional Mayor de San Marcos, Universidad Nacional de Ingeniería, Universidad Nacional de San Cristóbal de Huamanga.</li>
+                <li><strong>Universidades Privadas:</strong> Funcionan con aporte de los estudiantes. Ofrecen mayor variedad de carreras y modalidades. Ejemplos: Pontificia Universidad Católica del Perú, Universidad Peruana Cayetano Heredia, Universidad del Pacífico.</li>
+            </ul>
+            <p>Para estudiar en una universidad debes rendir el examen de admisión o postular por la modalidad de ingreso directo si ocupaste uno de los primeros puestos en la secundaria.</p>
+        </section>
+
+        <section class="institutos">
+            <h2>🛠️ Institutos Superiores Tecnológicos y Escuelas Superiores</h2>
+            <p>Si prefieres una formación más práctica y rápida, los institutos son una excelente alternativa. Ofrecen carreras técnicas y profesionales de corta duración (de 2 a 3 años).</p>
+            <ul>
+                <li><strong>Institutos Superiores Tecnológicos (IST):</strong> Carreras orientadas al sector productivo, industrial y de servicios. Ejemplos: contabilidad, enfermería, computación, mecánica, gastronomía.</li>
+                <li><strong>Escuelas Superiores:</strong> Formación especializada en áreas como arte, música, danza o educación.</li>
+                <li>Al igual que con las universidades, existen institutos públicos (gratuitos) y privados.</li>
+                <li>Al egresar obtienes un título a nombre de la Nación y puedes continuar posteriormente a la universidad si lo deseas.</li>
+            </ul>
+        </section>
+
+        <div class="oficial-link">
+            <p>🔗 Para información completa, bases y convocatorias vigentes visita la página oficial del Estado Peruano:</p>
+            <br>
+            <a href="https://www.gob.pe/educacion" target="_blank">Ir a gob.pe/educacion</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Página informativa — Fuente: Ministerio de Educación del Perú | Minedu</p>
+    </footer>
+
+</body>
+</html>
