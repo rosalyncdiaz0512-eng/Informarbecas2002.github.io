@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Becas y Estudios Superiores en el Perú</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #e8eaf6 0%, #ffffff 50%, #ffebee 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1a237e, #3949ab, #5c6bc0);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid;
+            display: inline-block;
+        }
+
+        .institucion {
+            border-left: 6px solid #3949ab;
+            text-align: center;
+        }
+        .institucion h2 {
+            color: #1a237e;
+            border-color: #ef5350;
+        }
+        .institucion h3 {
+            color: #263238;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* ✨ CAMBIOS PEDIDOS: Imagen más pequeña, centrada y SIN CUADRO ✨ */
+        .logo-contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.8rem 0;
+        }
+        /* Ajuste para reducir el tamaño de la imagen de Imgur */
+        .imgur-embed-pub {
+            max-width: 180px !important; /* Tamaño más pequeño */
+            width: 100% !important;
+            margin: 0 auto !important;
+        }
+        /* Ocultar el texto del enlace de Imgur */
+        .imgur-embed-pub a {
+            display: none;
+        }
+
+        .info-line {
+            font-size: 1.05rem;
+            margin: 0.5rem 0;
+            color: #333;
+        }
+        .info-line strong {
+            color: #1a237e;
+        }
+
+        .equipo {
+            border-left: 6px solid #c62828;
+        }
+        .equipo h2 {
+            color: #b71c1c;
+            border-color: #3949ab;
+            text-align: center;
+            width: 100%;
+        }
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .miembro {
+            background: linear-gradient(135deg, #e3f2fd, #fafafa);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #ddd;
+        }
+        .miembro .nombre {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #263238;
+            margin-bottom: 0.8rem;
+        }
+        .etiqueta {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+        }
+        .etiqueta.lider {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+        }
+        .etiqueta.integrante {
+            background: linear-gradient(135deg, #c62828, #ef5350);
+        }
+
+        .profesora {
+            text-align: center;
+            background: linear-gradient(135deg, #f5f5f5, #e3f2fd, #ffebee);
+            border-left: 6px solid #ef5350;
+        }
+        .profesora h2 {
+            color: #b71c1c;
+            border-color: #3949ab;
+        }
+        .nombre-profesora {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a237e;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            display: inline-block;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .becas {
+            border-left: 6px solid #3949ab;
+            background: linear-gradient(to right, #e8eaf6, #ffffff);
+        }
+        .becas h2 {
+            color: #1a237e;
+            border-color: #3949ab;
+        }
+
+        .universidades {
+            border-left: 6px solid #c62828;
+            background: linear-gradient(to right, #ffebee, #ffffff);
+        }
+        .universidades h2 {
+            color: #b71c1c;
+            border-color: #c62828;
+        }
+
+        .institutos {
+            border-left: 6px solid #5c6bc0;
+            background: linear-gradient(to right, #f5f5f5, #e3f2fd);
+        }
+        .institutos h2 {
+            color: #263238;
+            border-color: #5c6bc0;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        strong {
+            color: #1a237e;
+        }
+
+        .enlace-oficial {
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #3949ab, #ef5350);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .enlace-oficial a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: #1a237e;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .enlace-oficial a:hover {
+            background: #1a237e;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎓 Opciones de Estudio Después de la Secundaria</h1>
+        <p>Información sobre becas, universidades e institutos en el Perú</p>
+    </header>
+
+    <div class="container">
+
+        <section class="card institucion">
+            <h2>🏫 Institución Educativa</h2>
+            <h3>I.E. N° 2002 "Virgen María del Rosario"</h3>
+
+            <!-- 🖼️ IMAGEN: MÁS PEQUEÑA, CENTRADA Y SIN CUADRO 🖼️ -->
+            <div class="logo-contenedor">
+                <blockquote class="imgur-embed-pub" lang="en" data-id="a/tGRHD0d" data-context="false"></blockquote>
+                <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+            </div>
+            <!-- 🖼️ Fin imagen -->
+
+            <p class="info-line"><strong>Ubicación:</strong> Cooperativa de Vivienda Naranjal, Mz. F Lote 17 — San Martín de Porres, Lima</p>
+            <p class="info-line"><strong>Nivel y Grado:</strong> Secundaria — Segundo D</p>
+            <p class="info-line"><strong>Gestión:</strong> Pública</p>
+            <p class="info-line"><strong>Teléfono:</strong> 5288075</p>
+        </section>
+
+        <section class="card equipo">
+            <h2>👥 Integrantes del Equipo</h2>
+            <div class="equipo-grid">
+                <div class="miembro">
+                    <div class="nombre">Maikoll Delgado</div>
+                    <span class="etiqueta lider">Líder</span>
+                </div>
+                <div class="miembro">
+                    <div class="nombre">Mateo Chipana</div>
+                    <span class="etiqueta integrante">Integrante</span>
+                </div>
+                <div class="miembro">
+                    <div class="nombre">Alónzo Torres</div>
+                    <span class="etiqueta integrante">Integrante</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card profesora">
+            <h2>📚 Profesora</h2>
+            <div class="nombre-profesora">Doris Jau</div>
+        </section>
+
+        <section class="card becas">
+            <h2>📌 Becas y Ayudas Económicas</h2>
+            <p>Existen diversos programas de becas que te permiten continuar tus estudios superiores sin preocuparte por el costo de la matrícula o la pensión. Algunas de las principales son:</p>
+            <ul>
+                <li><strong>Beca 18:</strong> Programa del Estado peruano que cubre estudios en universidades, institutos o escuelas de las Fuerzas Armadas. Dirigido a jóvenes en condición de vulnerabilidad con alto rendimiento académico.</li>
+                <li><strong>Beca Permanencia:</strong> Apoyo económico para estudiantes que ya cursan estudios superiores y necesitan ayuda para mantenerse.</li>
+                <li><strong>Beca Docente:</strong> Destinada a jóvenes que desean estudiar carreras de educación y comprometerse a ejercer la docencia en zonas rurales o de difícil acceso.</li>
+                <li><strong>Beca para Comunidades Indígenas:</strong> Fomentan el acceso a la educación superior de jóvenes pertenecientes a pueblos originarios.</li>
+                <li><strong>Préstamos Educativos:</strong> Financiamiento reembolsable que te permite estudiar y pagar una vez que tengas ingresos.</li>
+            </ul>
+        </section>
+
+        <section class="card universidades">
+            <h2>🏛️ Universidades</h2>
+            <p>Las universidades ofrecen carreras profesionales de pregrado con una duración aproximada de 5 años. En el Perú existen dos tipos:</p>
+            <ul>
+                <li><strong>Universidades Públicas:</strong> Financiadas por el Estado, con matrícula generalmente gratuita o muy baja. El ingreso se da mediante examen de admisión. Ejemplos: Universidad Nacional Mayor de San Marcos, Universidad Nacional de Ingeniería, Universidad Nacional de San Cristóbal de Huamanga.</li>
+                <li><strong>Universidades Privadas:</strong> Funcionan con aporte de los estudiantes. Ofrecen mayor variedad de carreras y modalidades. Ejemplos: Pontificia Universidad Católica del Perú, Universidad Peruana Cayetano Heredia, Universidad del Pacífico.</li>
+            </ul>
+            <p>Para estudiar en una universidad debes rendir el examen de admisión o postular por la modalidad de ingreso directo si ocupaste uno de los primeros puestos en la secundaria.</p>
+        </section>
+
+        <section class="card institutos">
+            <h2>🛠️ Institutos Superiores Tecnológicos y Escuelas Superiores</h2>
+            <p>Si prefieres una formación más práctica y rápida, los institutos son una excelente alternativa. Ofrecen carreras técnicas y profesionales de corta duración (de 2 a 3 años).</p>
+            <ul>
+                <li><strong>Institutos Superiores Tecnológicos (IST):</strong> Carreras orientadas al sector productivo, industrial y de servicios. Ejemplos: contabilidad, enfermería, computación, mecánica, gastronomía.</li>
+                <li><strong>Escuelas Superiores:</strong> Formación especializada en áreas como arte, música, danza o educación.</li>
+                <li>Al igual que con las universidades, existen institutos públicos (gratuitos) y privados.</li>
+                <li>Al egresar obtienes un título a nombre de la Nación y puedes continuar posteriormente a la universidad si lo deseas.</li>
+            </ul>
+        </section>
+
+        <div class="enlace-oficial">
+            <h3>🔗 Para información completa, bases y convocatorias vigentes</h3>
+            <p>Visita la página oficial del Estado Peruano</p>
+            <a href="https://www.gob.pe/educacion" target="_blank">Ir a gob.pe/educacion</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Página informativa — Fuente: Ministerio de Educación del Perú | Minedu</p>
+    </footer>
+
+</body>
+</html>
+ 
